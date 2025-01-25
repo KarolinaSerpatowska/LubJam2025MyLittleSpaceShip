@@ -16,6 +16,16 @@ public class Player : MonoBehaviour, IDamagable
     private int powerUpAmount = 0;
     [SerializeField] private int powerUpWhenRealese = 2;
 
+    public GameObject GameObjectToSpawn;
+    private GameObject Clone;
+    public float timeToSpawn = 4f;
+    public float FirstSpawn = 10f;
+
+
+    public GameObject lufa;
+    float zPos, xPos, yPos;
+    Vector3 newPos;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -26,7 +36,9 @@ public class Player : MonoBehaviour, IDamagable
         InputHandler.Instance.OnMovement.AddListener(UpdateMovement);
         InputHandler.Instance.OnInteract.AddListener(InteractButton);
         InputHandler.Instance.OnFireAction.AddListener(Fire);
+        InputHandler.Instance.OnFireHold.AddListener(SuperFire);
     }
+
 
     private void FixedUpdate()
     {
@@ -70,14 +82,33 @@ public class Player : MonoBehaviour, IDamagable
     private void Fire()
     {
         Debug.Log("FIRE");
-        if(powerUpAmount >= powerUpWhenRealese) //shoot super projectile
-        {
-            powerUpAmount = 0;
-        }
-        else //shoot normal
-        {
 
+        FirstSpawn -= Time.deltaTime;
+        //if (Input.GetKey("space"))
+        //{
+            //Debug.Log("abcd");
+            Clone = Instantiate(GameObjectToSpawn, transform.position, Quaternion.identity);
+           // FirstSpawn = timeToSpawn;
+
+        //}
+
+        //if(powerUpAmount >= powerUpWhenRealese) //shoot super projectile
+        //{
+        //    powerUpAmount = 0;
+        //}
+        //else //shoot normal
+        //{
+
+        //}
+    }
+
+    private void SuperFire()
+    {
+        if (powerUpAmount >= powerUpWhenRealese)
+        {
+            
         }
+        Debug.Log("Super fire");
     }
 
     public void TakeDMG(float amount)

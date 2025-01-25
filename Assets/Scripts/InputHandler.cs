@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using System;
+using UnityEngine.InputSystem.Interactions;
 
 public class InputHandler : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class InputHandler : MonoBehaviour
     public UnityEvent OnMouseClick;
     public UnityEvent OnPauseAction;
     public UnityEvent OnFireAction;
+    public UnityEvent OnFireHold;
+
     private void Awake()
     {
         if(Instance == null)
@@ -112,6 +115,7 @@ public class InputHandler : MonoBehaviour
 
     private void OnFirePerformed(InputAction.CallbackContext value)
     {
-       OnFireAction.Invoke();
+       if( value.interaction is PressInteraction ) OnFireAction.Invoke();
+       else if(value.interaction is HoldInteraction) OnFireHold.Invoke();
     }
 }

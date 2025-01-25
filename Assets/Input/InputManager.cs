@@ -69,7 +69,7 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
                     ""id"": ""f8876ebf-cac2-4f92-adc5-7880a44293b9"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold,Press(behavior=1)"",
                     ""initialStateCheck"": false
                 },
                 {
