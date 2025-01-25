@@ -38,32 +38,38 @@ public class PlayerCamera : MonoBehaviour
 
     private void MoveCamera()
     {
-        yaw += rotationSpeed * InputHandler.Instance.mouseInput.x;
-        pitch -= rotationSpeed * InputHandler.Instance.mouseInput.y;
+        if (Time.timeScale != 0)
+        {
 
-        pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
+            yaw += rotationSpeed * InputHandler.Instance.mouseInput.x;
+            pitch -= rotationSpeed * InputHandler.Instance.mouseInput.y;
 
-        transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+            pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
+
+            transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+        }
     }
 
     private void Zoom()
     {
-
-        float R = InputHandler.Instance.scrollInput * 15 * zoomSpeed;          //The radius from current camera
-        float PosX = mainCamera.transform.eulerAngles.x + 90;              //Get up and down
-        float PosY = -1 * (mainCamera.transform.eulerAngles.y - 90);       //Get left to right
-        PosX = PosX / 180 * Mathf.PI;                                       //Convert from degrees to radians
-        PosY = PosY / 180 * Mathf.PI;                                       //^
-        float X = R * Mathf.Sin(PosX) * Mathf.Cos(PosY);                    //Calculate new coords
-        float Z = R * Mathf.Sin(PosX) * Mathf.Sin(PosY);                    //^
-        float Y = R * Mathf.Cos(PosX);                                      //^
-        float CamX = mainCamera.transform.position.x;                      //Get current camera postition for the offset
-        float CamY = mainCamera.transform.position.y;                      //^
-        float CamZ = mainCamera.transform.position.z;                      //^
-        float CamZlocal = mainCamera.transform.localPosition.z;
-        if (CamZlocal + Z >= clampZoomMin && CamZlocal + Z <= clampZoomMax)
+        if (Time.timeScale != 0)
         {
-           mainCamera.transform.position = new Vector3(CamX + X, CamY + Y, CamZ + Z);//Move the main camera
+            float R = InputHandler.Instance.scrollInput * 15 * zoomSpeed;          //The radius from current camera
+            float PosX = mainCamera.transform.eulerAngles.x + 90;              //Get up and down
+            float PosY = -1 * (mainCamera.transform.eulerAngles.y - 90);       //Get left to right
+            PosX = PosX / 180 * Mathf.PI;                                       //Convert from degrees to radians
+            PosY = PosY / 180 * Mathf.PI;                                       //^
+            float X = R * Mathf.Sin(PosX) * Mathf.Cos(PosY);                    //Calculate new coords
+            float Z = R * Mathf.Sin(PosX) * Mathf.Sin(PosY);                    //^
+            float Y = R * Mathf.Cos(PosX);                                      //^
+            float CamX = mainCamera.transform.position.x;                      //Get current camera postition for the offset
+            float CamY = mainCamera.transform.position.y;                      //^
+            float CamZ = mainCamera.transform.position.z;                      //^
+            float CamZlocal = mainCamera.transform.localPosition.z;
+            if (CamZlocal + Z >= clampZoomMin && CamZlocal + Z <= clampZoomMax)
+            {
+                mainCamera.transform.position = new Vector3(CamX + X, CamY + Y, CamZ + Z);//Move the main camera
+            }
         }
     }
 }
