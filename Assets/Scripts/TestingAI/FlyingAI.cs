@@ -124,6 +124,7 @@ public class FlyingAI : MonoBehaviour
 
 
         var proj = Instantiate(projectilePrefab, spawn.position, spawn.rotation);
+        proj.GetComponent<pocisk>().ownerTag = gameObject.tag;
         var rb = proj.GetComponent<Rigidbody>();
 
 

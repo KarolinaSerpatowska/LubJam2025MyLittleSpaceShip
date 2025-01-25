@@ -19,7 +19,11 @@ public class EnemyBaseScript : MonoBehaviour, IDamagable
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag != "Pickup")
-        particle.SetActive(true);
+        {
+            if(other.GetComponent<pocisk>() && other.GetComponent<pocisk>().ownerTag != gameObject.tag)
+            particle.SetActive(true);
+        }
+       
 
     }
 }

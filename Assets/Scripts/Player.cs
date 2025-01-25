@@ -88,6 +88,7 @@ public class Player : MonoBehaviour, IDamagable
         //{
             //Debug.Log("abcd");
             Clone = Instantiate(GameObjectToSpawn, transform.position, Quaternion.identity);
+        Clone.GetComponent<pocisk>().ownerTag = gameObject.tag;
            // FirstSpawn = timeToSpawn;
 
         //}
