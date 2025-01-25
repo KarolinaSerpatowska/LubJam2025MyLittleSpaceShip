@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -13,12 +14,11 @@ public class MainMenu : MonoBehaviour
 
     public void OnStartButtonClick()
     {
-        Application.LoadLevel(0);
+        SceneManager.LoadScene(0);
     }
 
     public void OnAuthorsButton()
     {
-        Debug.Log("authors");
         authorsPanel.SetActive(true);
         mainMenuPanel.SetActive(false);
     }

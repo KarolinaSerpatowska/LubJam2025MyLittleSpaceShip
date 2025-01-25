@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour, IInteraction
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private GameObject interactUI;
+
+    private void Start()
     {
-        
+        interactUI.SetActive(false);
     }
 
     public void Interact(GameObject player)
@@ -14,5 +15,16 @@ public class Pickup : MonoBehaviour, IInteraction
         player.GetComponent<Player>().PowerUpIncrease();
     }
 
+    public void ShowUI(bool enable)
+    {
+        if (enable)
+        {
+            interactUI.SetActive (true);
+        }
+        else
+        {
+            interactUI.SetActive(false);
+        }
+    }
    
 }

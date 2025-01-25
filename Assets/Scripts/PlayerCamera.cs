@@ -42,7 +42,6 @@ public class PlayerCamera : MonoBehaviour
     {
         if (Time.timeScale != 0)
         {
-            Debug.Log(yaw);
             yaw += rotationSpeed * InputHandler.Instance.mouseInput.x;
             pitch -= rotationSpeed * InputHandler.Instance.mouseInput.y;
 

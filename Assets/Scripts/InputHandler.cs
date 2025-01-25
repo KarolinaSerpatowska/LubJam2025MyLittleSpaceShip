@@ -11,7 +11,6 @@ public class InputHandler : MonoBehaviour
     private InputAction scrollAction;
     private InputAction mouseAction;
     private InputAction interactAction;
-    private InputAction mouseClick;
     private InputAction pauseAction;
     private InputAction fireAction;
 
@@ -28,8 +27,6 @@ public class InputHandler : MonoBehaviour
     public UnityEvent OnMouseClick;
     public UnityEvent OnPauseAction;
     public UnityEvent OnFireAction;
-
-
     private void Awake()
     {
         if(Instance == null)
@@ -106,11 +103,6 @@ public class InputHandler : MonoBehaviour
     private void OnInteraction(InputAction.CallbackContext value)
     {
         OnInteract.Invoke();
-    }
-
-    private void OnMouseClicking(InputAction.CallbackContext context)
-    {
-        OnMouseClick.Invoke();
     }
 
     private void OnPausePerformed(InputAction.CallbackContext value)

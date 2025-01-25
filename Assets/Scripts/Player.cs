@@ -14,6 +14,7 @@ public class Player : MonoBehaviour, IDamagable
     public List<GameObject> interactables;
 
     private int powerUpAmount = 0;
+    [SerializeField] private int powerUpWhenRealese = 2;
 
     private void Awake()
     {
@@ -52,7 +53,7 @@ public class Player : MonoBehaviour, IDamagable
             IInteraction interactable = interactables[0].GetComponent<IInteraction>();
             if (interactable != null)
             {
-                interactable.Interact(this.gameObject);
+                interactable.Interact(gameObject);
                 interactables.RemoveAt(0);
             }
         }
@@ -69,6 +70,14 @@ public class Player : MonoBehaviour, IDamagable
     private void Fire()
     {
         Debug.Log("FIRE");
+        if(powerUpAmount >= powerUpWhenRealese) //shoot super projectile
+        {
+            powerUpAmount = 0;
+        }
+        else //shoot normal
+        {
+
+        }
     }
 
     public void TakeDMG(float amount)
