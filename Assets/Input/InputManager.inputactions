@@ -36,25 +36,25 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "664ef4e1-e46e-4d94-bc61-61a922eab742",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Jump",
+                    "name": "Fire",
                     "type": "Button",
-                    "id": "281e738c-7236-42f3-b994-81f41c822818",
-                    "expectedControlType": "Button",
+                    "id": "f8876ebf-cac2-4f92-adc5-7880a44293b9",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MouseClick",
+                    "name": "Pause",
                     "type": "Button",
-                    "id": "06ae6cee-a067-4bb5-92a6-de23a1ce5954",
-                    "expectedControlType": "Button",
+                    "id": "49a56a9b-eba3-4e24-9bc4-0ffecad6b8c5",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -130,7 +130,7 @@
                 {
                     "name": "",
                     "id": "999f1bc0-f80f-4102-97c2-625d8ef4c036",
-                    "path": "<Mouse>/position",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -151,23 +151,23 @@
                 },
                 {
                     "name": "",
-                    "id": "0c927fd0-ca1f-4c34-9eda-3a689dea5e01",
+                    "id": "22db20e3-a2da-44fc-99a9-a07b6486379a",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Jump",
+                    "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "d8fbad9e-78df-42b6-a2f0-a10c09868eae",
-                    "path": "<Mouse>/leftButton",
+                    "id": "01c4c361-1d27-4c94-bb8b-91cce28231bb",
+                    "path": "<Keyboard>/p",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MouseClick",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

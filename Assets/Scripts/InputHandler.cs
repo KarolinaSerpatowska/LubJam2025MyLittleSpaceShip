@@ -11,8 +11,9 @@ public class InputHandler : MonoBehaviour
     private InputAction scrollAction;
     private InputAction mouseAction;
     private InputAction interactAction;
-    private InputAction jumpAction;
     private InputAction mouseClick;
+    private InputAction pauseAction;
+    private InputAction fireAction;
 
     public Vector2 moveInput { get; private set; }
     public float scrollInput { get; private set; }
@@ -24,8 +25,9 @@ public class InputHandler : MonoBehaviour
     public UnityEvent OnZoom;
     public UnityEvent OnMouseMovement;
     public UnityEvent OnInteract;
-    public UnityEvent OnJump;
     public UnityEvent OnMouseClick;
+    public UnityEvent OnPauseAction;
+    public UnityEvent OnFireAction;
 
 
     private void Awake()
@@ -46,19 +48,21 @@ public class InputHandler : MonoBehaviour
         scrollAction = playerInput.Player.Scroll;
         mouseAction = playerInput.Player.Mouse;
         interactAction = playerInput.Player.Interact;
-        jumpAction = playerInput.Player.Jump;
-        mouseClick = playerInput.Player.MouseClick;
+
+        pauseAction = playerInput.Player.Pause;
+        fireAction = playerInput.Player.Fire;
 
         moveAction.performed += OnMovementPerformed;
         moveAction.canceled += OnMovementCanceled;
 
         scrollAction.performed += OnScrollPerformed;
         mouseAction.performed += OnMouseMove;
-        mouseClick.performed += OnMouseClicking;
 
         interactAction.performed += OnInteraction;
 
-        jumpAction.performed += OnJumping;
+        pauseAction.performed += OnPausePerformed;
+        fireAction.performed += OnFirePerformed;
+
         
     }
 
@@ -68,14 +72,13 @@ public class InputHandler : MonoBehaviour
         scrollAction.Enable();
         mouseAction.Enable();
         interactAction.Enable();
-        jumpAction.Enable();
-        mouseClick.Enable();
+        pauseAction.Enable();
+        fireAction.Enable();
     }
 
     private void OnMovementPerformed(InputAction.CallbackContext value)
     {
         moveInput = value.ReadValue<Vector2>();
-        Debug.Log("Movement");
         OnMovement.Invoke();
     }
 
@@ -105,13 +108,18 @@ public class InputHandler : MonoBehaviour
         OnInteract.Invoke();
     }
 
-    private void OnJumping(InputAction.CallbackContext context)
-    {
-        OnJump.Invoke();
-    }
-
     private void OnMouseClicking(InputAction.CallbackContext context)
     {
         OnMouseClick.Invoke();
+    }
+
+    private void OnPausePerformed(InputAction.CallbackContext value)
+    {
+        OnPauseAction.Invoke();
+    }
+
+    private void OnFirePerformed(InputAction.CallbackContext value)
+    {
+       OnFireAction.Invoke();
     }
 }
