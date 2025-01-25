@@ -21,6 +21,10 @@ public class Player : MonoBehaviour, IDamagable
     public float timeToSpawn = 4f;
     public float FirstSpawn = 10f;
 
+    public float hp = 100.0f;
+
+
+    [SerializeField] private GameObject deathScreen;
 
     public GameObject lufa;
     float zPos, xPos, yPos;
@@ -56,6 +60,12 @@ public class Player : MonoBehaviour, IDamagable
         Vector3 forward = -transform.forward.normalized * forwardSpeed;
         input.z = forward.z;
         rb.MovePosition(transform.position + input * Time.fixedDeltaTime);
+        if (input.x < 0)
+        {
+            transform.Rotate(Vector3.forward * Time.fixedDeltaTime * 10.0f);
+        }
+        else if (input.x > 0) transform.Rotate(-Vector3.forward * Time.fixedDeltaTime * 10.0f);
+        else transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(transform.forward), 10.0f * Time.fixedDeltaTime);
     }
 
     private void InteractButton()
@@ -110,6 +120,17 @@ public class Player : MonoBehaviour, IDamagable
 
     public void TakeDMG(float amount)
     {
-        Debug.Log("Take dmg");
+        hp-=amount;
+        if(hp <= 0)
+        {
+            Debug.Log("death");
+            Death();
+        }
+    }
+
+    private void Death()
+    {
+        Time.timeScale = 0;
+        deathScreen.SetActive(true);
     }
 }

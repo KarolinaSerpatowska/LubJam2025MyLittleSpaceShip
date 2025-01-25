@@ -23,7 +23,7 @@ public class PlayerCamera : MonoBehaviour
     void Start()
     {
         InputHandler.Instance.OnMouseMovement.AddListener(MoveCamera);
-        InputHandler.Instance.OnZoom.AddListener(Zoom);
+       // InputHandler.Instance.OnZoom.AddListener(Zoom);
 
         transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
     }
