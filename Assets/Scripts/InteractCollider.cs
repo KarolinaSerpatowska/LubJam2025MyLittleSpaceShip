@@ -5,11 +5,14 @@ public class InteractCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        GetComponentInParent<Player>().interactables.Add(other.gameObject);
-        IInteraction showUI = other.gameObject.GetComponent<IInteraction>();
-        if(showUI != null)
+        if (other.gameObject.tag == "Pickup")
         {
-            showUI.ShowUI(true);
+            GetComponentInParent<Player>().interactables.Add(other.gameObject);
+            IInteraction showUI = other.gameObject.GetComponent<IInteraction>();
+            if (showUI != null)
+            {
+                showUI.ShowUI(true);
+            }
         }
     }
 

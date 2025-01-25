@@ -34,7 +34,7 @@ void Update () {
 
 //this.gameObject.transform.position = newPos;
 
-if (Input.GetKey("space")) {
+if (Input.GetKey("space") && Time.timeScale != 0) {
 //Debug.Log("abcd");
 yPos = lufa.gameObject.transform.position.y;
 xPos = lufa.gameObject.transform.position.x;
@@ -46,10 +46,10 @@ GetComponent<Renderer>().enabled = true;
 
 Powiekszanie();}
 
-if (Input.GetKeyUp("space")) {
+if (Input.GetKeyUp("space") && Time.timeScale != 0) {
 spacja=true;}
 
-if(spacja==true){
+if(spacja==true && Time.timeScale !=0){
 MoveOnZ(0.3f);}
 }
 
@@ -57,15 +57,21 @@ void OnCollisionEnter(Collision collision)
     {
         //if (collision.transform.parent.gameObject.tag == "a") {
         //Debug.Log("abcd");
-        if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Pickup")
-            Destroy(collision.gameObject, 0.5f); 
+        if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Pickup" && collision.gameObject.tag != "Interact")
+        {
+            Destroy(collision.gameObject, 0.5f);
+        }
+            
 	//Destroy(this.gameObject);
         
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "Player" && other.gameObject.tag != "Pickup")
-            Destroy(other.gameObject, 0.5f); 
+        if (other.gameObject.tag != "Player" && other.gameObject.tag != "Pickup" && other.gameObject.tag != "Interact")
+        {
+            Destroy(other.gameObject, 0.5f);
+        }
+           
     }
 }

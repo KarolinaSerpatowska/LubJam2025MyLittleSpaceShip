@@ -81,26 +81,22 @@ public class Player : MonoBehaviour, IDamagable
 
     private void Fire()
     {
-        Debug.Log("FIRE");
-
-        FirstSpawn -= Time.deltaTime;
-        //if (Input.GetKey("space"))
-        //{
-            //Debug.Log("abcd");
+        if(Time.timeScale != 0)
+        {
+            FirstSpawn -= Time.deltaTime;
             Clone = Instantiate(GameObjectToSpawn, transform.position, Quaternion.identity);
-        Clone.GetComponent<pocisk>().ownerTag = gameObject.tag;
-           // FirstSpawn = timeToSpawn;
+            Clone.GetComponent<pocisk>().ownerTag = gameObject.tag;
 
-        //}
+            //if(powerUpAmount >= powerUpWhenRealese) //shoot super projectile
+            //{
+            //    powerUpAmount = 0;
+            //}
+            //else //shoot normal
+            //{
 
-        //if(powerUpAmount >= powerUpWhenRealese) //shoot super projectile
-        //{
-        //    powerUpAmount = 0;
-        //}
-        //else //shoot normal
-        //{
+            //}
+        }
 
-        //}
     }
 
     private void SuperFire()

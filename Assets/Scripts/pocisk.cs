@@ -18,7 +18,10 @@ MoveOnZ(1.0f);
 
 private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag != ownerTag && other.gameObject.tag != "Pickup")
-            Destroy(other.gameObject, 0.5f); 
+        if(other.gameObject.tag != ownerTag && other.gameObject.tag != "Pickup" && other.gameObject.tag != "Interact")
+        {
+            Destroy(other.gameObject, 0.5f);
+        }
+            
     }
 }
