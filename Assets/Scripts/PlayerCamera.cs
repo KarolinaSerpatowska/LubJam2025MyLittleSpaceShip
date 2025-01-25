@@ -13,7 +13,7 @@ public class PlayerCamera : MonoBehaviour
     public float clampZoomMax = 30f;
     public float clampZoomMin = -125f;
 
-    private float yaw = 0.0f;
+    private float yaw = 180.0f;
     private float pitch = 0.0f;
 
     public float rotationSpeed = 0.1f;
@@ -24,6 +24,8 @@ public class PlayerCamera : MonoBehaviour
     {
         InputHandler.Instance.OnMouseMovement.AddListener(MoveCamera);
         InputHandler.Instance.OnZoom.AddListener(Zoom);
+
+        transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
     }
 
     private void LateUpdate()
@@ -40,7 +42,7 @@ public class PlayerCamera : MonoBehaviour
     {
         if (Time.timeScale != 0)
         {
-
+            Debug.Log(yaw);
             yaw += rotationSpeed * InputHandler.Instance.mouseInput.x;
             pitch -= rotationSpeed * InputHandler.Instance.mouseInput.y;
 
