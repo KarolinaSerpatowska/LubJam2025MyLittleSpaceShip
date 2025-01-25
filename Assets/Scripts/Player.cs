@@ -25,7 +25,6 @@ public class Player : MonoBehaviour
         InputHandler.Instance.OnMovement.AddListener(UpdateMovement);
         InputHandler.Instance.OnInteract.AddListener(InteractButton);
         InputHandler.Instance.OnFireAction.AddListener(Fire);
-        InputHandler.Instance.OnPauseAction.AddListener(Pause);
     }
 
     private void FixedUpdate()
@@ -70,10 +69,5 @@ public class Player : MonoBehaviour
     private void Fire()
     {
         Debug.Log("FIRE");
-    }
-
-    private void Pause()
-    {
-        Debug.Log("PAUSE");
     }
 }
