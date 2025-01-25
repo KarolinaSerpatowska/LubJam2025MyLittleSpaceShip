@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamagable
 {
     private Rigidbody rb;
 
@@ -69,5 +69,10 @@ public class Player : MonoBehaviour
     private void Fire()
     {
         Debug.Log("FIRE");
+    }
+
+    public void TakeDMG(float amount)
+    {
+        Debug.Log("Take dmg");
     }
 }
