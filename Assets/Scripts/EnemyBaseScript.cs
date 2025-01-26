@@ -21,7 +21,11 @@ public class EnemyBaseScript : MonoBehaviour, IDamagable
         if(other.gameObject.tag != "Pickup")
         {
             if(other.GetComponent<pocisk>() && other.GetComponent<pocisk>().ownerTag != gameObject.tag)
-            particle.SetActive(true);
+            {
+                GetComponent<AudioSource>().Play();
+                particle.SetActive(true);
+            }
+            
         }
        
 

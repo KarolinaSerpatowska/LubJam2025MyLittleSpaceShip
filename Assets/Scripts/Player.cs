@@ -23,6 +23,8 @@ public class Player : MonoBehaviour, IDamagable
 
     public float hp = 100.0f;
 
+    [SerializeField] private AudioClip fireSound;
+    [SerializeField] private AudioClip fireSound2;
 
     [SerializeField] private GameObject deathScreen;
 
@@ -93,6 +95,15 @@ public class Player : MonoBehaviour, IDamagable
     {
         if(Time.timeScale != 0)
         {
+            AudioSource audioSource = GetComponent<AudioSource>();
+            if(audioSource != null)
+            {
+                int rand = Random.Range(0, 2);
+                if(rand == 0) audioSource.clip = fireSound;
+                else audioSource.clip = fireSound2;
+                audioSource.Play();
+            }
+
             FirstSpawn -= Time.deltaTime;
             Clone = Instantiate(GameObjectToSpawn, transform.position, Quaternion.identity);
             Clone.GetComponent<pocisk>().ownerTag = gameObject.tag;
