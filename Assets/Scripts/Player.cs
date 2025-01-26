@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class Player : MonoBehaviour, IDamagable
 {
+    public Slider SliderSpecialAttack;
+
     private Rigidbody rb;
 
     [SerializeField] private Vector2 moveInput;
@@ -89,6 +92,7 @@ public class Player : MonoBehaviour, IDamagable
     {
         powerUpAmount += 1;
         Debug.Log(powerUpAmount);
+        SliderSpecialAttack.value = powerUpAmount;
     }
 
     private void Fire()
